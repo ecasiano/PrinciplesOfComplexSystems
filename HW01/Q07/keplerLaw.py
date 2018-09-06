@@ -13,8 +13,8 @@ with plt.style.context('../../IOP_large.mplstyle'):
     #Some nice pastel colors
     red = ["#e85c47"]
     blue = ["#4173b3"]
-    orange = ["#7dcca4"]
-    green = ["#7dcca4"]    #Actually green
+    orange = ["#ff8c00"]
+    green = ["#7dcca4"]    
     violet = ["#b19cd9"]
 
     alpha = [0.8,0.5,0.1]
