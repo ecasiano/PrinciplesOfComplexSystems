@@ -31,7 +31,7 @@ with plt.style.context('../../IOP_large.mplstyle'):
 
     #Define functions
     def S(V,gamma1,gamma2,gamma3):
-        return 1*(1 + V**-(abs(gamma1-gamma2)) + V**-(abs(gamma1-gamma3)))
+        return (V**(gamma1+gamma2) + V**(abs(gamma2+gamma3)) + V**(abs(gamma3+gamma1)))
         
     "--------------------------------------------------------------------"
 
@@ -48,10 +48,9 @@ with plt.style.context('../../IOP_large.mplstyle'):
     ax1.set_xlabel(r"$V [L^3]$")
     ax1.set_ylabel(r"$S(V) [L^2]$")
     ax1.tick_params(axis='both', which='both', left='on', right='off', top='off', bottom='on', labelleft='on', direction = 'in')
-    ax1.set_ylim(0.8,3.2)
-    ax1.set_xlim(-5,2000.1)
-    ax1.legend(loc=(0.24,0.16),fontsize=9,frameon=False,handlelength=1,handleheight=1,title=r'($\gamma_1,\gamma_2,\gamma_3$)',ncol=3)
-    ax1.text(750,2.6,r"$S(V) = 1 + \frac{1}{V^{|\gamma_1 - \gamma_2|}} + \frac{1}{V^{|\gamma_1 - \gamma_3|}}$",fontsize=10)    
+    #ax1.set_ylim(0.8,3.2)
+    #ax1.set_xlim(-5,2000.1)
+    ax1.legend(loc=(0.03,0.67),fontsize=9,frameon=False,handlelength=1,handleheight=1,title=r'($\gamma_1,\gamma_2,\gamma_3$)',ncol=3)
     plt.savefig("minecraftConvergence.pdf")
     
     
