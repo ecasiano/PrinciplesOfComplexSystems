@@ -85,7 +85,9 @@ fig, ax2 = plt.subplots()
 ax2.plot(np.log10(k),np.log10(k**-(gamma-1)),'.',color=violet[0])
 ax2.set_xlabel(r"$\log_{10}{k}$")
 ax2.set_ylabel(r"$\log_{10}{N_{\geq k}}$")
-plt.savefig("wordFrequencyCCDFLog.pdf",rasterized=True)
+#plt.savefig("wordFrequencyCCDFLog.pdf",rasterized=True)
+plt.savefig("wordFrequencyCCDFLog.jpg",rasterized=True)
+
 
 
 

@@ -52,7 +52,7 @@ def findPowerLaw(x,y):
             
 '''---Main---'''
 tmax = 100000 #max-time step
-rho = 0.1
+rho = 0.001
 
 #Implement the Rich-Get-Richer Model for tmax
 #time steps and rho innovation rate
@@ -61,6 +61,8 @@ elephantGroups = RGR(rho,tmax)
 #Sort elephant groups (ascending order) to determine ranking of each group
 elephantGroups = np.sort(elephantGroups)[::-1]
 ranks = np.arange(np.size(elephantGroups),dtype=int)
+
+
 
 #Find power-law of Zipf-distribution
 A,p = findPowerLaw(ranks[1:],elephantGroups[1:])
@@ -86,20 +88,26 @@ ax3.text(0.10, 0.20,r"$\rho = %.3f$"%rho, transform=ax3.transAxes)
 plt.legend(loc='best')
 #ax3.set_xlim(1,300)
 #ax3.set_ylim(45,100)
+plt.clf()
 
 #plt.savefig("rgr_zipf_rho%.3f.pdf"%rho,rasterized=True)
-plt.savefig("Trash.pdf")
-plt.clf()
 
 #Do bar chart at time tmax
 fig, ax4 = plt.subplots()
 ax4.bar(range(1,np.size(elephantGroups)+1),elephantGroups)
 ax4.set_ylabel(r"Group Size")
-ax4.set_xlabel(r"Elephant Flavors")
+ax4.set_xlabel(r"Elephant Flavor")
 ax4.text(0.55, 0.62,r"$\rho = %.3f$"%rho, transform=ax3.transAxes)
 ax4.text(0.55, 0.58,r"$t = %d$"%tmax, transform=ax3.transAxes)
+plt.clf()
 
-plt.savefig("histogram_rho%.3f.pdf"%rho)
+#plt.savefig("richGetRicherBarChart_rho%.3f.pdf"%rho)
+
+fig, ax5 = plt.subplots()
+ax5.plot(range(1,np.size(elephantGroups)+1),elephantGroups,'.')
+ax5.loglog()
+plt.savefig("Testing.pdf")
+
     
 
 

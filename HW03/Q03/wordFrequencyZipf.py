@@ -89,15 +89,19 @@ fig, ax1 = plt.subplots()
 ax1.plot(np.log10(r[0:100000]),np.log10(k[0:100000]),'.',color=green[0])
 ax1.set_xlabel(r"$\log_{10}{r}$")
 ax1.set_ylabel(r"$\log_{10}{k_r}$")
-plt.savefig("zipfRanksLog.pdf",rasterized=True)
+#plt.savefig("zipfRanksLog.pdf",rasterized=True)
 #plt.savefig("zipfRanksLog.png")
+plt.savefig("zipfRanksLog.jpg",rasterized=True)
+
 
 fig, ax1 = plt.subplots()
 ax1.plot(np.log10(r),np.log10(k),'-',color=green[0])
 ax1.set_xlabel(r"$\log_{10}{r}$")
 ax1.set_ylabel(r"$\log_{10}{k_r}$")
-plt.savefig("zipfRanksLogLine.pdf",rasterized=True)
+#plt.savefig("zipfRanksLogLine.pdf",rasterized=True)
 #plt.savefig("zipfRanksLogLine.png")
+plt.savefig("zipfRanksLogLine.jpg",rasterized=True)
+
 
 
 
