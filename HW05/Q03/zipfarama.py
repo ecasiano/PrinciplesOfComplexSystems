@@ -14,13 +14,15 @@ def zipfarama(a,alpha,n):
 #Parameters
 n = 1E+06
 a = 1
+a = (np.exp(1)-n)/(1-np.exp(1))
+
 alpha = np.random.random() #Randomly generate an alpha in [0,1)
 
 #Absolute error between 1 and summation with the current alpha
 error = np.abs(np.sum(zipfarama(a,alpha,n)) - 1)
 
 #Desired tolerance between 1 and summation
-tol = 1E-03
+tol = 1E-02
 
 #Estimating loop
 while(error > tol):

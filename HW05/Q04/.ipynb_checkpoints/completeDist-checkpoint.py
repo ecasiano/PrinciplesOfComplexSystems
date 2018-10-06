@@ -81,7 +81,7 @@ print("Fraction of total words that belong to k>=200: %.2e"%(np.sum(Nk[200:]*k[2
 '''---Plot---'''
 
 fig, ax1 = plt.subplots()
-ax1.plot(k[0:20000],Nk[0:20000],'.',color=violet[0])
+ax1.plot(k[0:10000],Nk[0:10000],'.',color=violet[0])
 ax1.set_xlabel(r"$k$")
 ax1.set_ylabel(r"$N_k$")
 ax1.loglog()
