@@ -1,0 +1,105 @@
+
+\documentclass{article}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Emanuel Casiano-Diaz}
+\rhead{CSYS300: PoCS - Homework 05 - 10/05/2018}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{pdfpages}
+
+\usepackage{enumerate}% http://ctan.org/pkg/enumerate
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{booktabs,float,siunitx}
+%\usepackage[demo]{graphicx} % omit 'demo' option in real document
+
+\begin{document}
+
+\section{Exercise 1}
+\subsection{a)}
+A forest of size $\ell$ occurs when there the following patter occurs:
+\begin{align}
+\text{EMPTY}-\underbrace{\text{TREE-TREE . . . -TREE}}_{\ell-times}-\text{EMPTY}
+\end{align}
+
+The probability of a tree on site and of an empty site are:
+\begin{align}
+p \text{ and } (1-p),
+\end{align}
+respectively.
+
+Thus, the probability of landing in an $\ell-$sized cluster of trees (or forest) is:
+
+\begin{align}
+n_{\ell}(p) = (1-p) * \underbrace{p * p * p * \dots p}_{\ell-times} * (1-p)
+\end{align}
+
+Or
+
+\begin{align}
+n_{\ell}(p) = (1-p)^2 p^{\ell}
+\end{align}
+
+\subsection{b)}
+
+Recall that: $0 \leq p \leq 1$.
+
+Percolation in a $1D$ lattice occurs when all sites have trees. The probability of percolation is thus $p^L$, where $L$ is the lattice size. In the limit of $L\to\infty$, then it is seen that:
+
+\begin{align}
+\lim_{L\to\infty} p^L = \begin{cases} 0 , 0\leq p < 1 \\1 , p=1 \end{cases}
+\end{align}
+
+Thus, for an infinitely large lattice in $1D$, percolation only occurs if $p=1$.
+
+\begin{align}
+\therefore p_c = 1
+\end{align}
+
+\section{Exercise 2}
+
+Via Real Space Renormalization (RSR), each triangular sublattice is replaced by a single site, or supersite. If the majority of the sites in the sublattice is open (closed), then the supersite is open (closed). The probability that a site is closed is given by $p$ and $(1-p)$, if open. Thus, we need the count how many configurations of triangular sublattices have a majority of closed sites (i.e, 2 or 3 closed) and determine the probability that we will get one of these majority closed sites. Let the majority closed probability be defined as $p'$. Then, applying the discussed RSR rules to the infinitely large triangular lattice, the majority closed probability is:
+
+\begin{align}
+p' = p^3 + 3p^2(1-p)
+\end{align}
+
+Now, setting $p'=p$, the critical probability can be determined:
+
+\begin{align}
+p' &= p \\
+\implies p' - p &= 0 \\
+2p^3 - 3p^2 + p &= 0 \\
+p(p-\frac{1}{2})(p-1) &= 0
+\end{align}
+
+Thus: $p=0,1,\frac{1}{2}$. The first two options are just the trivial solutions discussed in the hint video. Thus, the critical probability for the infinitely large triangular lattice is:
+
+\begin{align}
+p_c = \frac{1}{2}
+\end{align}
+
+\section{Exercise 3}
+
+The code developed to simulate the 2D Percolation Problem can be found here: \url{}
+
+
+\section{Exercise 4}
+\section{Exercise 5}
+\end{document}

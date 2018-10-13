@@ -22,11 +22,12 @@ def createLattice(L,p):
 
 #Parameters
 L = 32 #Linear size
-N = int(1E+05) #Number of runs
+N = int(3E+06) #Number of runs
 pc = 0.6 #Tree rate
 l = np.arange(1,(L**2)+1) #Possible forest sizes
 Nl = np.zeros(np.size(l),dtype=int) #Array to store amount of times an l sized forest appears
-probabilities = [pc,pc/2,pc+(1-pc)/2]
+#probabilities = [pc,pc/2,pc+(1-pc)/2]
+probabilities = [0.55,0.65]
 
 for p in probabilities:
     print("p = %2f"%p)
