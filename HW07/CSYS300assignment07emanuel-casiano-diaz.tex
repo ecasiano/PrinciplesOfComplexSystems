@@ -1,0 +1,160 @@
+\documentclass{article}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Emanuel Casiano-Diaz}
+\rhead{CSYS300: PoCS - Homework 07 - 10/26/2018}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{pdfpages}
+
+\usepackage{enumerate}% http://ctan.org/pkg/enumerate
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{booktabs,float,siunitx}
+%\usepackage[demo]{graphicx} % omit 'demo' option in real document
+
+\begin{document}
+
+\section{Exercise 1}
+
+a) $p(x) = cx^{-(q+1)}$ \\
+
+\begin{align}
+p_{\geq}(x) &= c \int_{x}^{\infty} t^{-(q+1)}dt \\
+&= c \frac{t^-q}{-q} \vert_{t=x}^{t=\infty} \\
+p_{\geq}(x) &= \frac{c}{q} x^{-q}
+\end{align}
+
+For simplicity, let $\frac{c}{q}\equiv1$. Recall also that:
+
+\begin{equation}
+P_{\geq}(A) = \int_{p^{-1}(A^{-\gamma})}^{\infty} p(x) dx = p_{\geq}(p^{-1}(A^{-\gamma}))
+ \end{equation}
+ 
+ The inverse function of $p(x) = cx^{-(q+1)}$ is $p^{-1}(x) = x^{-(\frac{1}{q+1})}$. Thus,
+ 
+ \begin{align}
+ P_{\geq}(A) &= (p^{-1})^{-q} \\
+ &= (x^{-(\frac{1}{q+1})})^{-q} \vert_{x=A^{-\gamma}} \\
+ P_{\geq}(A) &= A^{-\gamma(\frac{q}{q+1})} 
+ \end{align}
+ 
+ b) $p(x) = ce^{-x}$ \\
+ 
+ \begin{align}
+p_{\geq}(x) &= c \int_{x}^{\infty} e^{-t}dt \\
+&= -c e^{-t} \vert_{t=x}^{t=\infty} \\
+p_{\geq}(x) &= ce^{-x}
+\end{align}
+
+For simplicity, let $c \equiv 1$. The inverse function of $p(x) = e^{-x}$ is $p^{-1}(x) = -\log{x}$. Thus, 
+
+\begin{align}
+P_{\geq}(A) &= e^{-p^{-1}(A^{-\gamma})} \\
+&= e^{\log{A^\gamma}} \\
+P_{\geq}(A) &= A^{-\gamma}
+\end{align}
+
+c) $p(x) = e^{-x^2}$ \\
+
+The Complementary Cumulative Distribution Function (CCDF) is:
+
+\begin{equation}
+p_{\geq}(x) = x^{-1}e^{-x^2} 
+\end{equation}
+
+(For full derivation, click here: INSERT LINK). \\
+
+The inverse function of $p(x) = e^{-x^2}$ is $p^{-1}(x) = \sqrt{-\log{x}}$. Thus:
+
+\begin{align}
+P_{\geq}(A) &= (p^{-1})^{-1}e^{-(p^{-1})^2} \\
+&= (-\log{x})^{-1/2}e^{\log{x}} \vert_{x = A^{-\gamma}} \\
+P_{\geq}(A) &= A^{-\gamma}[\log{A}]^{-1/2}
+\end{align}
+
+\section{Exercise 2}
+
+The cost function for our discrete H.O.T is:
+
+\begin{equation}
+C_{fire} = K \sum_{i=1}^{N_{sites}} p_i a_i
+\end{equation}
+
+And the constraint function is:
+
+\begin{equation}
+C_{firewalls} = D \sum_{i=1}^{N_{sites}} a_i^{\frac{(d-1)}{d}} a_i^{-1}
+\end{equation}
+
+where $K$ and $D$ are proportionality constants. \\
+
+Via the Lagrange Multiplier method, we get the equation:
+
+\begin{equation}
+\frac{\partial C_{fire}}{\partial a_i} = \lambda \frac{\partial C_{firewalls}}{\partial a_i}
+\end{equation}
+
+Substituting the expressions for $C_{fire}$ and $C_{firewalls}$ into the equation above:
+
+\begin{equation}
+K \sum_{i=1}^{N_{sites}} p_i = \lambda D \sum_{i=1}^{N_sites} \frac{d}{da_i}[a_i^{(\frac{d-1}{d})}a^{-i}]
+\end{equation}
+
+Applying the product rule of derivatives to the right hand side and dropping the summations:
+
+\begin{equation}
+K p_i = \lambda D (\frac{-1}{d} a_i^{\frac{-1}{d}-1})
+\end{equation} \\
+
+which implies that:
+
+\begin{equation}
+p_i = \lambda \frac{D}{K}  (\frac{-1}{d} a_i^{\frac{-1}{d}-1})
+\end{equation}
+
+\begin{equation}
+\therefore p_i \propto a_i^{-(1+\frac{1}{d})}
+\end{equation}
+
+\section{Exercise 3}
+
+a) The probability of a starting a forest fire at site $(i,j)$ is:
+
+\begin{equation}
+P(i,j) = c e^{-i/\ell}e^{-j/\ell}
+\end{equation}
+
+where $c$ is a normalization constant. Let the characteristic scale be $\ell = \frac{L}{10}$, where $L$ denotes the linear size of the square lattice. Summing $P(i,j)$ over all possible lattice sites, the normalization constant can be determined:
+
+\begin{align}
+1 &= \sum_{i=1,j=1}^{L} c e^{-i/\ell}e^{-j/\ell} \\
+&= c \sum_{i=1}^{L} e^{-i/\ell} \sum_{j=1}^{L} e^{-j/\ell} \\
+&= c (-\frac{1-e^{-\frac{L}{\ell}}}{1-e^{\frac{1}{\ell}}}) (-\frac{1-e^{-\frac{L}{\ell}}}{1-e^{\frac{1}{\ell}}})
+1 &= c (-\frac{1-e^{-\frac{L}{\ell}}}{1-e^{\frac{1}{\ell}}})^2
+\end{align}
+
+Solving for $c$ and then substituting $\ell = \frac{L}{10}$, the normalization constant becomes:
+
+\begin{equation}
+c = (\frac{1-e^{\frac{10}{L}}}{1-e^{-10}})^2
+\end{equation}
+
+b) Code used can be found here: 
+
+\end{document}
